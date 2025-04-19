@@ -1,0 +1,18 @@
+include *.txt
+include *.md
+include *.pkl
+recursive-include ./titanic_model *
+
+include credit_approval_model/config/datasets/credit_approval.csv
+include credit_approval_model/config/datasets/test.csv
+include credit_approval_model/trained_models/*.pkl
+include credit_approval_model/VERSION
+include credit_approval_model/config.yml
+
+include ./requirements/requirements.txt
+include ./requirements/test_requirements.txt
+exclude *.log
+exclude *.cfg
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]

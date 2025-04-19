@@ -1,0 +1,139 @@
+# Data Files
+training_data_file: credit_approval.csv
+# test_data_file: test.csv
+
+# Variables
+# The variable we are attempting to predict (credit_category)
+target: credit_category
+
+pipeline_name: credit_model
+pipeline_save_file: credit__model_output_v
+
+features:      # final features to be use
+  - A1
+  - A2_A3   # generated  by  A2/A3 <--Before pipeline alongwith loading the data
+  - A4
+  - A5
+  - A6
+  - A7
+  - A8_A11  # generated  by  A8 * A11 <--Before pipeline alongwith loading the data
+  - A9
+  - A10 
+  - A12
+  - A13
+  - A14_A15 # generated  by  log(A14 * A15) <--Before pipeline alongwith loading the data
+
+unused_fields:  # Features to drop before pipeline
+  - A2
+  - A3
+  - A8
+  - A11
+  - A14
+  - A15
+
+numerical_features:  # Features to be used in the pipeline
+  - A2
+  - A3
+  - A8
+  - A11
+  - A14
+  - A15
+categorical_features:  # Features to be used in the pipeline
+  - A1
+  - A4
+  - A5
+  - A6
+  - A7
+  - A9
+  - A10
+  - A12
+  - A13
+# Features inside processing pipeline
+# to be updated later
+
+a1_var: A1  # first imputatation , then --> Mapping
+a2_var: A2
+a3_var: A3
+a4_var: A4
+a5_var: A5
+a6_var: A6
+a7_var: A7
+a8_var: A8
+a9_var: A9
+a10_var: A10
+a11_var: A11
+a12_var: A12
+a13_var: A13
+a14_var: A14
+a15_var: A15 
+A2_A3_var: A2_A3
+A8_A11_var: A8_A11
+A14_A15_var: A14_A15 
+    
+a1_mappings:
+  a: 0
+  b: 1
+
+a4_mappings:
+  u: 0
+  y: 1
+  l: 2
+
+a5_mappings:
+  g: 0
+  p: 1
+  gg: 2
+
+a6_mappings:
+  w: 0
+  q: 1
+  m: 2
+  r: 3
+  cc: 4
+  k: 5
+  c: 6
+  d: 7
+  x: 8
+  i: 9
+  e: 10
+  aa: 11
+  ff: 12
+  j: 13
+
+a7_mappings:
+  v: 0
+  h: 1
+  bb: 2
+  ff: 3
+  j: 4
+  z: 5
+  o: 6
+  dd: 7
+  n: 8
+
+a9_mappings:
+  t: 0
+  f: 1
+
+a10_mappings:
+  t: 0
+  f: 1
+
+a12_mappings:
+  f: 0
+  t: 1
+
+a13_mappings:
+  g: 0
+  s: 1
+  p: 2
+  
+# set train/test split
+test_size: 0.20
+
+# to set the random seed
+random_state: 42
+# alogrithm parameters
+n_estimators: 150
+max_depth: 5
+max_features: 3
