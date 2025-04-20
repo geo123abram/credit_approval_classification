@@ -1,0 +1,17 @@
+fastapi==0.115.12
+uvicorn==0.34.2
+starlette==0.46.2         # FastAPI backend framework
+jinja2==3.1.6              # HTML templating
+scikit-learn==1.6.1
+numpy==2.2.2
+pandas==2.2.3
+joblib==1.4.2              # Used for loading scikit-learn models
+httpx==0.28.1              # Used internally by FastAPI for HTTP client
+pydantic==2.10.5
+pydantic_core==2.27.2
+typing_extensions==4.13.2
+python-dateutil==2.9.0.post0
+PyYAML==6.0.2
+strictyaml==1.7.3
+pytest==8.3.5
+requests==2.32.3           # If you make any external HTTP calls

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Credit Approval Prediction</title>
+</head>
+<body>
+  <h2>Credit Approval Prediction Form</h2>
+
+  <form id="predictForm">
+    <!-- Categorical Fields -->
+    <label for="A1">A1:</label>
+    <select name="A1">
+      <option value="a">a</option>
+      <option value="b">b</option>
+      <option value="?">?</option>
+    </select><br>
+
+    <label for="A2">A2:</label>
+    <input type="number" step="0.01" name="A2" min="13.75" max="80.25" required><br>
+
+    <label for="A3">A3:</label>
+    <input type="number" step="0.01" name="A3" min="0.0" max="28.0" required><br>
+
+    <label for="A4">A4:</label>
+      <select name="A4">
+        <option value="u">u</option>
+        <option value="y">y</option>
+        <option value="l">l</option>
+        <option value="?">?</option>
+      </select><br>
+
+    <label for="A5">A5:</label>
+    <select name="A5">
+      <option value="g">g</option>
+      <option value="p">p</option>
+      <option value="gg">gg</option>
+      <option value="?">?</option>
+    </select><br>
+
+    <label for="A6">A6:</label>
+    <select name="A6">
+      <option value="w">w</option><option value="q">q</option><option value="m">m</option><option value="r">r</option>
+      <option value="cc">cc</option><option value="k">k</option><option value="c">c</option><option value="d">d</option>
+      <option value="x">x</option><option value="i">i</option><option value="e">e</option><option value="aa">aa</option>
+      <option value="ff">ff</option><option value="j">j</option><option value="?">?</option>
+    </select><br>
+
+    <label for="A7">A7:</label>
+    <select name="A7">
+      <option value="v">v</option><option value="h">h</option><option value="bb">bb</option><option value="ff">ff</option>
+      <option value="j">j</option><option value="z">z</option><option value="?">?</option><option value="o">o</option>
+      <option value="dd">dd</option><option value="n">n</option>
+    </select><br>
+
+    <label for="A8">A8:</label>
+    <input type="number" step="0.01" name="A8" min="0.0" max="28.5" required><br>
+
+    <label for="A9">A9:</label>
+    <select name="A9">
+      <option value="t">t</option>
+      <option value="f">f</option>
+    </select><br>
+
+    <label for="A10">A10:</label>
+    <select name="A10">
+      <option value="t">t</option>
+      <option value="f">f</option>
+    </select><br>
+
+    <label for="A11">A11:</label>
+    <input type="number" step="1" name="A11" min="0" max="67" required><br>
+    
+
+    <label for="A12">A12:</label>
+    <select name="A12">
+      <option value="f">f</option>
+      <option value="t">t</option>
+    </select><br>
+
+    <label for="A13">A13:</label>
+    <select name="A13">
+      <option value="g">g</option>
+      <option value="s">s</option>
+      <option value="p">p</option>
+    </select><br>
+
+    <label for="A14">A14:</label>
+    <input type="number" step="0.01" name="A14" min="0.0" max="2000.0" required><br>
+
+    <label for="A15">A15:</label>
+    <input type="number" step="1" name="A15" min="0" max="100000" required><br>
+
+
+    <button type="submit">Predict</button>
+  </form>
+
+  <h3 id="result"></h3>
+
+  <script>
+    const form = document.getElementById("predictForm");
+
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+      const data = {};
+      const intFields = ["A11", "A15"];
+      const floatFields = ["A2", "A3", "A8", "A14"];
+
+      formData.forEach((value, key) => {
+        if (intFields.includes(key)) {
+          data[key] = parseInt(value);
+        } else if (floatFields.includes(key)) {
+          data[key] = parseFloat(value);
+        } else {
+          data[key] = value;
+        }
+      });
+
+      const response = await fetch("/predict/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+      document.getElementById("result").innerText =
+        "Prediction: " + (result?.predictions?.[0] || "Unknown");
+    });
+
+  </script>
+</body>
+</html>

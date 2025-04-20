@@ -1,0 +1,19 @@
+# Python and build files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.ipynb
+
+# IDE / project files
+.vscode/
+.env
+*.env
+
+# Git
+.git/
+
+# Local conda or venv environments
+credit_env/
+venv/
+.env/

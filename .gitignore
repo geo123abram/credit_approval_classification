@@ -1,6 +1,6 @@
 __pycache__/
+# *.pkl
 *.pyc
-*.pkl
 *.log
 .env
 *.egg-info/
