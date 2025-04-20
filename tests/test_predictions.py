@@ -34,7 +34,7 @@ def test_make_prediction(sample_input_data=None):
     # Then
     predictions = result.get("predictions")
 
-    assert isinstance(predictions, np.ndarray)
+    assert type(predictions) is list
     assert isinstance(predictions[0], str)
     assert predictions[0] in ['+', '-']
     assert result.get("errors") is None
