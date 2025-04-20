@@ -42,5 +42,5 @@ jobs:
   
       - name: 🚀 Push Docker image
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/credit-approval-app:v1
+          docker push ${{ secrets.DOCKER_USERNAME }}/credit-approval-app:v1 # trying again
   
