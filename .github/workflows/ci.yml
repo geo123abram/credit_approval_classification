@@ -32,4 +32,4 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t credit-approval-app .
+          docker build -t credit-approval-app . # create docker image
