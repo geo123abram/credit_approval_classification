@@ -42,6 +42,9 @@ class CreditInput(BaseModel):
 def get_form(request: Request):
     return templates.TemplateResponse("form.html", {"request": request})
 
+@app.get("/predict/")
+def show_predict_info():
+    return {"message": "POST to this endpoint with prediction data."}
 
 
 @app.post("/predict")
