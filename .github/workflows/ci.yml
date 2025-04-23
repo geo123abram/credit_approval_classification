@@ -45,3 +45,14 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/credit-approval-app:v1 # trying again
   
+      - name: 🛠️ SSH and restart app on EC2
+        uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            docker pull geo123abram/credit-approval-app:v1
+            docker stop $(docker ps -q --filter ancestor=geo123abram/credit-approval-app:v1)
+            docker run -d -p 8000:8000 geo123abram/credit-approval-app:v1
+        
