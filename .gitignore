@@ -3,5 +3,5 @@ __pycache__/
 *.log
 .env
 *.egg-info/
-venv/
+credit_env/
 .env/

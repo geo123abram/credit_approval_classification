@@ -44,6 +44,7 @@ def get_form(request: Request):
 
 
 
+@app.post("/predict")
 @app.post("/predict/")
 def predict_credit(data: CreditInput):
     # print("Received data:", data)
