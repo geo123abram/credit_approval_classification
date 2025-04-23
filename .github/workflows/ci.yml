@@ -55,5 +55,5 @@ jobs:
             docker pull geo123abram/credit-approval-app:v1
             docker stop $(docker ps -q --filter ancestor=geo123abram/credit-approval-app:v1)
             docker run -d -p 8000:8000 geo123abram/credit-approval-app:v1
-            # hello
+            # updated the IP address to the public IP of the EC2 instance
         
