@@ -8,6 +8,7 @@ from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from fastapi.middleware.cors import CORSMiddleware
 
 from pydantic import BaseModel
 from typing import Optional
@@ -16,6 +17,14 @@ from credit_approval_model.predict import make_prediction
 
 # Create the app instance
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://pronouncetrainer.com"],  # or your domain like ["https://yourfrontend.com"]
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Tell FastAPI where your templates are
 templates = Jinja2Templates(directory="templates")
